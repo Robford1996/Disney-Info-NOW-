@@ -27,6 +27,17 @@ mongoose.connection
   .on("close", () => console.log("You are disconnected from Mongoose"))
   .on("error", (error) => console.log(error));
 
+//////////////////////
+//MODELS
+/////////////////////
+
+///////////////////
+//MIDDLEWARE
+///////////////////
+app.use(cors());
+app.use(morgan("dev"));
+app.use(express.json());
+
 /////////////////////
 //ROUTES
 ////////////////////
@@ -34,6 +45,22 @@ mongoose.connection
 app.get("/", (req, res) => {
   res.send("hello mother");
 });
+
+//MK route
+const mkController = require("./controllers/mk.js");
+app.use("/mk", mkController);
+
+//EPCOT Route
+const ecController = require("./controllers/ec.js");
+app.use("/ec", ecController);
+
+//Studios Route
+const stController = require("./controllers/st.js");
+app.use("/st", stController);
+
+//DAK Route
+const dakController = require("./controllers/dak.js");
+app.use("/dak", dakController);
 
 ///////////////////
 //LISTENER
