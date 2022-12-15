@@ -4,7 +4,7 @@
 // get .env variables
 require("dotenv").config();
 //pull PORT from .env, give default value 4000
-const { PORT = 4000, MONGODB_URL } = process.env;
+const { PORT = 4000, DATABASE_URI } = process.env;
 // import express
 const express = require("express");
 //create app object
@@ -19,7 +19,7 @@ const morgan = require("morgan");
 //DATABASE CONNECTION
 /////////////////
 //Establish connection
-mongoose.connect(MONGODB_URL);
+mongoose.connect(DATABASE_URI);
 
 //Connection Events
 mongoose.connection
@@ -31,18 +31,23 @@ mongoose.connection
 //MODELS
 /////////////////////
 
+//require routes
+const indexRoutes = require("./routes/index");
+
 ///////////////////
 //MIDDLEWARE
 ///////////////////
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
+app.use("/", indexRoutes);
 
 /////////////////////
 //ROUTES
 ////////////////////
+
 //test route
-app.get("/", (req, res) => {
+app.get("/din", (req, res) => {
   res.send("hello mother");
 });
 

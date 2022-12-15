@@ -3,7 +3,7 @@ const router = express.Router();
 const Dakatr = require("../models/dakatr.js");
 
 //Index Route
-router.get("/dak/:id/attraction", async (req, res) => {
+router.get("/dak/attraction/:id", async (req, res) => {
   try {
     let selectedAttraction = await Dakatr.findById(req.params.id);
     res.json(selectedAttraction.name);
