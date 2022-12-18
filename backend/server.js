@@ -50,12 +50,12 @@ app.use("/", indexRoutes);
 app.get("/din", (req, res) => {
   res.send("hello mother");
 });
-
-//MK route
+ 
+//MK route 
 const mkController = require("./controllers/mk.js");
-app.use("/mk", mkController);
+app.use("/mk", mkController); 
 
-//EPCOT Route
+//EPCOT Route 
 const ecController = require("./controllers/ec.js");
 app.use("/ec", ecController);
 
