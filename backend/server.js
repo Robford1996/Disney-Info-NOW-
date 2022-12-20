@@ -52,18 +52,18 @@ app.get("/din", (req, res) => {
 });
  
 //MK route 
-const mkController = require("./controllers/mk.js");
+const mkController = require("./controllers/mk.js"); 
 app.use("/mk", mkController); 
-
+ 
 //EPCOT Route 
 const ecController = require("./controllers/ec.js");
-app.use("/ec", ecController);
+app.use("/ec", ecController); 
 
 //Studios Route
-const stController = require("./controllers/st.js");
+const stController = require("./controllers/st.js"); 
 app.use("/st", stController);
 
-//DAK Route
+//DAK Route 
 const dakController = require("./controllers/dak.js");
 app.use("/dak", dakController);
 
